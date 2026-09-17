@@ -1,5 +1,15 @@
 # 🎵 YuE2 Studio —— 云端 AI 音乐工作站
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![UI](https://img.shields.io/badge/UI-Gradio-orange.svg)
+![GPU](https://img.shields.io/badge/GPU-24GB%2B%20VRAM-red.svg)
+![Model](https://img.shields.io/badge/model-YuE2--3B-informational)
+
+> **English** — A cloud AI music workstation built on YuE2: form-based songwriting, melody-locked
+> song covers, ABC score editing, and dual-mode voice conversion (RVC / Seed-VC). Deploy with one
+> script on any 24 GB GPU (tested on AutoDL RTX 4090). Docs are in Chinese; feel free to open an issue.
+
 基于开源模型 [YuE2](https://github.com/multimodal-art-projection/YuE) 的云端音乐生成工作站：
 **表单化写歌、翻唱任意歌曲、乐谱级编辑**，全部在浏览器完成。
 
