@@ -18,7 +18,7 @@ SSH 私钥路径与当前实例的登录指令记录在本地私有文件 **`LOC
 
 | 路径 | 作用 |
 |------|------|
-| `/root/autodl-tmp/yue2-studio/` | 本项目（setup.sh / start.sh / 文档） |
+| `/root/autodl-tmp/yue2-studio/` | 本项目（setup.sh / start.sh / preinstall_envs.sh / 文档） |
 | `/root/autodl-tmp/yue2_webui.py` | 运行中的网页工作台（= 本项目 app/yue2_webui.py） |
 | `/root/autodl-tmp/YuE/` | 官方模型仓库（生成引擎 + SheetSage2 转录） |
 | `/root/autodl-tmp/output_web/` | 所有产物：每首歌/每次转录一个时间戳目录 |
