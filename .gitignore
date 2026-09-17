@@ -1,0 +1,15 @@
+# 私有信息（绝不发布）
+LOCAL-PRIVATE.md
+
+# 打包产物
+*.zip
+*.tar.gz
+
+# Python
+__pycache__/
+*.pyc
+.venv*/
+
+# 运行产物（服务器端目录，本地一般没有，防御性排除）
+output_web/
+hf-seedvc/
