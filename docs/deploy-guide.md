@@ -70,6 +70,11 @@
 | `YUE2_BASE` | 工作区根路径（仓库/产物/变声脚本都放这） | `/root/autodl-tmp` |
 | `YUE2_PYGEN` | 生成用解释器 | `/root/miniconda3/bin/python`（缺失自动探测 `python3`） |
 | `YUE2_WEBUI_PY` | 网页解释器（需装 gradio） | conda `yue2` 环境（缺失自动探测 `python3`） |
+| `YUE2_WEBUI_USER` / `YUE2_WEBUI_PASS` | 网页登录账号/密码（**两者都设置才启用鉴权**） | 不设置 = 无鉴权 |
+
+> 🔐 **安全提醒**：AutoDL 的「自定义服务」地址是平台代理后的私有入口，无鉴权尚可接受；
+> 但自有服务器把 6006 暴露到公网时，**务必**在启动前 `export YUE2_WEBUI_USER=admin
+> YUE2_WEBUI_PASS=强密码`，否则任何知道 IP 的人都能白嫖你的 GPU。
 
 **各平台要点**：
 

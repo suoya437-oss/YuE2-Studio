@@ -912,4 +912,16 @@ except TypeError:
         demo.queue(concurrency_count=1)
     except TypeError:
         demo.queue()
-demo.launch(server_name="0.0.0.0", server_port=6006, show_error=True)
+# 网页鉴权：设置 YUE2_WEBUI_USER / YUE2_WEBUI_PASS 即启用登录（密码不落仓库）。
+# 不设置 = 无鉴权（AutoDL 代理后的私有地址可接受；自有服务器裸奔公网强烈建议设置）。
+_AUTH_USER = os.environ.get("YUE2_WEBUI_USER")
+_AUTH_PASS = os.environ.get("YUE2_WEBUI_PASS")
+if _AUTH_USER and _AUTH_PASS:
+    print(f"[yue2-webui] ✅ 网页鉴权已启用（用户名: {_AUTH_USER}），打开页面需先登录")
+    demo.launch(server_name="0.0.0.0", server_port=6006, show_error=True,
+                auth=(_AUTH_USER, _AUTH_PASS),
+                auth_message="YuE2 Studio 工作台 · 请输入管理员分配的账号密码")
+else:
+    print("[yue2-webui] ⚠️ 未设置 YUE2_WEBUI_USER / YUE2_WEBUI_PASS，网页无鉴权运行中"
+          "（AutoDL 代理后可接受；服务器直连公网时请务必设置，一行环境变量即可）")
+    demo.launch(server_name="0.0.0.0", server_port=6006, show_error=True)

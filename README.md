@@ -68,7 +68,8 @@ bash bin/start.sh            # 浏览器打开 http://机器IP:6006
 ```
 
 与 AutoDL 的差异只有三点：工作区路径用 `YUE2_BASE` 环境变量指定；网页直接 `IP:6006`
-访问（没有代理层）；国内 pip/HF 镜像源在海外机器上可换成官方源（更快）。
+访问（没有代理层，公网部署请用 `YUE2_WEBUI_USER`/`YUE2_WEBUI_PASS` 开启登录鉴权）；
+国内 pip/HF 镜像源在海外机器上可换成官方源（更快）。
 细节见[部署指南](docs/deploy-guide.md)。
 
 ## 日常使用
