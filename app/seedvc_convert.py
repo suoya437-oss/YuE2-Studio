@@ -6,12 +6,13 @@ Seed-VC 零样本变声流水线（在 .venv-seedvc 环境中运行）
 用法：
     python seedvc_convert.py --input song.mp3 --reference ref.mp3 [--pitch 0] [--steps 40] --outdir out
 """
+import os
 import sys
 import argparse
 import subprocess
 from pathlib import Path
 
-SEEDVC_DIR = Path("/root/autodl-tmp/seed-vc")
+SEEDVC_DIR = Path(os.environ.get("YUE2_BASE", "/root/autodl-tmp")) / "seed-vc"
 
 
 def sh(cmd, cwd=None):

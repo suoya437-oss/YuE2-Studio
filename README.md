@@ -56,6 +56,21 @@
 > ⚠️ AutoDL 的**数据盘不随镜像走**：换新实例后需要重新 clone 仓库并跑一次 `setup.sh`
 >（脚本有缓存检测，已装过的部分会跳过）。
 
+## 通用部署（任意 ≥24GB 显存的 Linux GPU 机器）
+
+本项目**不绑定 AutoDL**——本质只需要一台 NVIDIA GPU（≥24GB、Ampere 架构及以上）的 Ubuntu 机器：
+
+```bash
+git clone https://github.com/suoya437-oss/YuE2-Studio.git && cd YuE2-Studio
+bash bin/setup.sh            # 可选：export YUE2_BASE=/data 指定工作区根路径（默认 /root/autodl-tmp）
+bash bin/preinstall_envs.sh  # 可选：预装转录/变声环境，免首次使用等待
+bash bin/start.sh            # 浏览器打开 http://机器IP:6006
+```
+
+与 AutoDL 的差异只有三点：工作区路径用 `YUE2_BASE` 环境变量指定；网页直接 `IP:6006`
+访问（没有代理层）；国内 pip/HF 镜像源在海外机器上可换成官方源（更快）。
+细节见[部署指南](docs/deploy-guide.md)。
+
 ## 日常使用
 
 - 开机 → `bash bin/start.sh` → 控制台点「自定义服务」

@@ -11,7 +11,7 @@
 set -uo pipefail
 
 TENCENT="https://mirrors.cloud.tencent.com/pypi/simple"
-BASE=/root/autodl-tmp
+BASE="${YUE2_BASE:-/root/autodl-tmp}"   # 通用化：非 AutoDL 平台 export YUE2_BASE=/your/path
 REPO=$BASE/YuE
 export HF_ENDPOINT="https://hf-mirror.com"
 # 关键：pip 缓存/临时目录放数据盘，避免撑爆系统盘（30G 已被 conda+权重占满）

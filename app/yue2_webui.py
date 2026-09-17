@@ -21,11 +21,11 @@ import gradio as gr
 
 print(f"[yue2-webui] gradio 版本: {gr.__version__}")
 
-BASE_DIR = Path("/root/autodl-tmp")
+BASE_DIR = Path(os.environ.get("YUE2_BASE", "/root/autodl-tmp"))
 REPO = BASE_DIR / "YuE"
 OUTROOT = BASE_DIR / "output_web"
 
-PYGEN = "/root/miniconda3/bin/python"
+PYGEN = os.environ.get("YUE2_PYGEN") or "/root/miniconda3/bin/python"
 if not Path(PYGEN).exists():
     import shutil
     PYGEN = shutil.which("python") or "python"

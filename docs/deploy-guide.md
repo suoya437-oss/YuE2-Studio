@@ -56,3 +56,28 @@
 - 4090：约 ¥2/时；单曲 2–10 分钟；翻唱转录 1–2 分钟（环境就绪后）
 - 充值 ¥50 ≈ 25 小时 ≈ 数百首歌
 - 模型权重许可 CC BY-NC 4.0：**个人创作 OK，商用需另行授权**
+
+## 七、通用部署（非 AutoDL 平台）
+
+项目本质只依赖「≥24GB 显存 + BF16 的 NVIDIA GPU + Ubuntu」，AutoDL 是参考部署环境而非绑定。
+所有 AutoDL 专属逻辑都有兜底：`/etc/network_turbo` 不存在自动跳过；conda 缺失时提示改用
+任意 Python + `pip install gradio`；网页监听 `0.0.0.0:6006`，任何平台直接 `http://IP:6006` 访问。
+
+**环境变量**（AutoDL 上不设任何变量，行为与原来完全一致）：
+
+| 变量 | 作用 | 默认值（AutoDL 布局） |
+|------|------|----------------------|
+| `YUE2_BASE` | 工作区根路径（仓库/产物/变声脚本都放这） | `/root/autodl-tmp` |
+| `YUE2_PYGEN` | 生成用解释器 | `/root/miniconda3/bin/python`（缺失自动探测 `python3`） |
+| `YUE2_WEBUI_PY` | 网页解释器（需装 gradio） | conda `yue2` 环境（缺失自动探测 `python3`） |
+
+**各平台要点**：
+
+| 平台 | 要点 |
+|------|------|
+| 恒源云 / 仙宫云 | 与 AutoDL 同类，几乎零改造，`YUE2_BASE` 按其数据盘路径设一下即可 |
+| RunPod / vast.ai | 海外直连快：腾讯源换官方 PyPI、删 `HF_ENDPOINT` 镜像；网页直接 `IP:6006` |
+| 自有服务器 / 工作站（3090/4090） | 最通用形态：Ubuntu 22.04 + 驱动 + `YUE2_BASE=/your/path`；无租金、数据在手；注意 6006 端口防火墙放行 |
+
+系统依赖（脚本会自动装，仅列明）：`git`、`ffmpeg`（apt）、`python3.10-venv`（变声/转录 venv 用），
+因此**推荐 Debian/Ubuntu 系**；其他发行版需自行替换 apt 为对应包管理器。
